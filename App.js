@@ -1,4 +1,3 @@
-import {View, Text, SafeAreaView} from 'react-native';
 import React, {useEffect} from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {NavigationContainer} from '@react-navigation/native';
@@ -7,14 +6,20 @@ import {allTexts, colors, fontFamily} from './src/common';
 import Invitation from './src/screens/invitation';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Contacts from './src/screens/contacts';
-import Starter from './src/screens/starting-screen';
 import SplashScreen from 'react-native-splash-screen';
+import Walima from './src/screens/walima';
+import {View, Text, SafeAreaView} from 'react-native';
+import Starter from './src/screens/starting-screen';
+import Barat from './src/screens/barat';
 
 const App = () => {
   const Tab = createMaterialTopTabNavigator();
   const Stack = createStackNavigator();
   const getInvitation = () => {
     return <Invitation />;
+  };
+  const getWalima = () => {
+    return <Walima />;
   };
   const getContactScreen = () => {
     return <Contacts />;
@@ -42,7 +47,7 @@ const App = () => {
           })}
           options={{
             tabBarPressColor: colors.white,
-            tabBarLabel: allTexts.headings.invite,
+            tabBarLabel: 'Barat',
             tabBarLabelStyle: {
               fontFamily: fontFamily.popinBold,
               textTransform: 'capitalize',
@@ -51,8 +56,28 @@ const App = () => {
             tabBarInactiveTintColor: colors.white,
             tabBarBounces: true,
           }}
-          name={'Invitation'}
+          name={'Barat'}
           component={getInvitation}
+        />
+        <Tab.Screen
+          listeners={(navigation, route) => ({
+            tabPress: e => {
+              console.log(e);
+            },
+          })}
+          options={{
+            tabBarPressColor: colors.white,
+            tabBarLabel: 'Walima',
+            tabBarLabelStyle: {
+              fontFamily: fontFamily.popinBold,
+              textTransform: 'capitalize',
+            },
+            tabBarActiveTintColor: colors.lightYellow,
+            tabBarInactiveTintColor: colors.white,
+            tabBarBounces: true,
+          }}
+          name={'Walima'}
+          component={getWalima}
         />
         <Tab.Screen
           listeners={(navigation, route) => ({
@@ -82,11 +107,11 @@ const App = () => {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
+          {/*   <Stack.Screen
             name={'starter'}
             component={Starter}
             options={{headerShown: false}}
-          />
+  />*/}
           <Stack.Screen
             name={'drawerRoot'}
             component={TabNavigators}

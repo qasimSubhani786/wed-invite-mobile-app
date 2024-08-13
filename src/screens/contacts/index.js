@@ -66,13 +66,13 @@ const Contacts = () => {
             flex: 1,
           }}
           style={{flex: 1}}>
-          <ContactList
+          {/* <ContactList
             name={allTexts.headings.contacts.father.name}
             relation={allTexts.headings.contacts.father.relation}
             onPress={() => {
               placePhoneCall(allTexts.headings.contacts.father.cell);
             }}
-          />
+          /> */}
           <ContactList
             name={allTexts.headings.contacts.brother.name}
             relation={allTexts.headings.contacts.brother.relation}

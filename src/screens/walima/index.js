@@ -12,7 +12,7 @@ import React, {useEffect} from 'react';
 import {allTexts, colors, fontFamily} from '../../common';
 import PushNotification from 'react-native-push-notification';
 
-const Invitation = () => {
+const Walima = () => {
   const createChannelForNotifications = () => {
     PushNotification.createChannel(
       {
@@ -26,23 +26,12 @@ const Invitation = () => {
       created => console.log(`createChannel returned '${created}'`), // (optional) callback returns whether the channel was created, false means it already existed.
     );
   };
-  const handelNotifications = notiList => {
-    try {
-      PushNotification.localNotification({
-        channelId: '123',
-        title: allTexts.headings.starterNotificationMsg,
-        message: `With joyous hearts, we invite you to attend the Walima Ceremony of Mr and Mrs ${allTexts.headings.groom}`,
-      });
-    } catch (error) {
-      alert(error);
-    }
-  };
 
   const ScheduleNotifications = params => {
     try {
       PushNotification.localNotificationSchedule({
         title: 'Hurry Up!',
-        date: new Date(allTexts.headings.pushNotificationReminder),
+        date: new Date(allTexts.headings.pushNotificationReminderWalima),
         message:
           'Please Join us on Time!  We request the pleasure of your company!',
         allowWhileIdle: false,
@@ -55,7 +44,6 @@ const Invitation = () => {
 
   useEffect(() => {
     createChannelForNotifications();
-    handelNotifications();
     ScheduleNotifications();
   }, []);
 
@@ -68,23 +56,13 @@ const Invitation = () => {
         }}>
         <Text
           style={{
-            fontSize: 50,
+            fontSize: 40,
             color: colors.lightYellow2,
             fontFamily: fontFamily.michele,
+            textAlign: 'center',
           }}>
           {name}
         </Text>
-        <View style={{borderWidth: 0, maxWidth: 250, alignItems: 'center'}}>
-          <Text
-            style={{
-              fontSize: 12,
-              color: colors.Yellow3,
-              fontFamily: fontFamily.trajanBold,
-              textAlign: 'center',
-            }}>
-            {desc}
-          </Text>
-        </View>
       </View>
     );
   };
@@ -119,7 +97,7 @@ const Invitation = () => {
   const openMaps = (latitude, longitude) => {
     const scheme = Platform.select({ios: 'maps:0,0?q=', android: 'geo:0,0?q='});
     const latLng = `${parseFloat(latitude)},${parseFloat(longitude)}`;
-    const label = `Life Qilla Marquee `;
+    const label = `Sabzazar Ganjshakar Park`;
     const url = Platform.select({
       ios: `${scheme}${label}@${latLng}`,
       android: `${scheme}${latLng}(${label})`,
@@ -140,15 +118,12 @@ const Invitation = () => {
           style={{flex: 1}}>
           <View
             style={{
+              // borderWidth: 2,
               alignItems: 'center',
               marginTop: 40,
-              // height: 220,
               justifyContent: 'space-between',
             }}>
-            <NameTitle
-              name={allTexts.headings.groom}
-              desc={allTexts.headings.groomParent}
-            />
+            <NameTitle name={'Walima Ceremony '} />
             <View style={{marginTop: 10}}>
               <Text
                 style={{
@@ -156,13 +131,21 @@ const Invitation = () => {
                   color: colors.lightYellow2,
                   fontFamily: fontFamily.michele,
                 }}>
-                {'Weds'}
+                {'of'}
               </Text>
             </View>
-            <NameTitle
-              name={allTexts.headings.bride}
-              desc={allTexts.headings.brideParent}
-            />
+            <NameTitle name={allTexts.headings.groom} />
+            <View style={{marginTop: 10}}>
+              <Text
+                style={{
+                  fontSize: 25,
+                  color: colors.lightYellow2,
+                  fontFamily: fontFamily.michele,
+                }}>
+                {'With'}
+              </Text>
+            </View>
+            <NameTitle name={allTexts.headings.bride} />
           </View>
           <View
             style={{
@@ -174,25 +157,25 @@ const Invitation = () => {
             }}>
             <HeadingTitle
               heading={'InshaAllah! the function will be held on'}
-              desc={allTexts.headings.baratDate}
+              desc={allTexts.headings.WalimaDate}
             />
             <View style={{height: 10}} />
             <HeadingTitle heading={'Time'} desc={'07:00PM to 10:00PM'} />
             <View style={{height: 5}} />
             <HeadingTitle
               heading={'venue'}
-              desc={allTexts.headings.baratVenu}
+              desc={allTexts.headings.WalimaVenu}
             />
             <View style={{height: 8}} />
             <HeadingTitle
               fontSize={12}
-              heading={allTexts.headings.baratVenuDetails}
+              heading={allTexts.headings.WalimaVenuDetails}
               desc={''}
             />
           </View>
           <TouchableOpacity
             onPress={() => {
-              openMaps(31.442828542942706, 73.01171823915539);
+              openMaps(31.530024637601947, 74.2626613103224);
             }}
             style={{
               width: '90%',
@@ -218,4 +201,4 @@ const Invitation = () => {
   );
 };
 
-export default Invitation;
+export default Walima;
