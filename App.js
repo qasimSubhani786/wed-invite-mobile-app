@@ -47,7 +47,7 @@ const App = () => {
           })}
           options={{
             tabBarPressColor: colors.white,
-            tabBarLabel: 'Barat',
+            tabBarLabel: 'Wedding Procession',
             tabBarLabelStyle: {
               fontFamily: fontFamily.popinBold,
               textTransform: 'capitalize',
@@ -67,7 +67,7 @@ const App = () => {
           })}
           options={{
             tabBarPressColor: colors.white,
-            tabBarLabel: 'Walima',
+            tabBarLabel: 'Wedding Reception',
             tabBarLabelStyle: {
               fontFamily: fontFamily.popinBold,
               textTransform: 'capitalize',

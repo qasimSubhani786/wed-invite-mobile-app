@@ -173,7 +173,7 @@ const Invitation = () => {
               alignItems: 'center',
             }}>
             <HeadingTitle
-              heading={'InshaAllah! the function will be held on'}
+              heading={"By God's grace! the function will be held on"}
               desc={allTexts.headings.baratDate}
             />
             <View style={{height: 10}} />
